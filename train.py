@@ -175,8 +175,8 @@ def main():
             acc = torch.sum(pred_labels == label_ids.to(device)).item() / len(pred_labels) #acc
             accuracy += acc
 
-        average_loss = losses / len(train_dataloader)
-        average_acc = accuracy / len(train_dataloader)
+        average_loss = losses / len(valid_dataloader)
+        average_acc = accuracy / len(valid_dataloader)
 
         print('\tValid ACC:', average_acc, '\tLoss:', average_loss)
         with open('output.txt', 'a') as rf:
