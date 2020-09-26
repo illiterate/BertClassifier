@@ -31,6 +31,7 @@
 |  软件 | 环境 |
 |  ----  | ----  |
 | OS | Ubuntu 18.04 LTS |
+| CUDA | 10.2 |
 | PyTorch | 1.6.0 |
 | transformers | 3.2.0 |
 
