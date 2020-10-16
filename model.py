@@ -1,3 +1,10 @@
+# coding: utf-8
+# @File: model.py
+# @Author: HE D.H.
+# @Email: victor-he@qq.com
+# @Time: 2020/10/10 17:12:56
+# @Description:
+
 import torch
 import torch.nn as nn
 from transformers import  BertModel

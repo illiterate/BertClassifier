@@ -1,3 +1,10 @@
+# coding: utf-8
+# @File: train.py
+# @Author: HE D.H.
+# @Email: victor-he@qq.com
+# @Time: 2020/10/10 17:14:07
+# @Description:
+
 import torch
 import torch.nn as nn
 from transformers import BertTokenizer, AdamW, BertConfig

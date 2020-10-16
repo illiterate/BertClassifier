@@ -1,3 +1,10 @@
+# coding: utf-8
+# @File: predict.py
+# @Author: HE D.H.
+# @Email: victor-he@qq.com
+# @Time: 2020/10/10 17:13:57
+# @Description:
+
 import torch
 from model import BertClassifier
 from transformers import BertTokenizer, BertConfig
