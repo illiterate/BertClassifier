@@ -21,7 +21,7 @@ def get_bert_input(text, tokenizer, max_len=512):
         参数:   
             text: 文本(单个句子)
             tokenizer: 分词器
-            max_len: 文本分词后的最大长度
+            max_len: 文本分词后的最大长度。其实后来发现，少于512的没必要加padding，也就是少于512的也可输入到Bert中
         返回值:
             input_id, attention_mask, token_type_id
     '''
