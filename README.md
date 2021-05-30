@@ -37,4 +37,13 @@
 
 
 ~~如果需要数据集，请与我联系.~~
+
 数据集放在了百度网盘上：链接: https://pan.baidu.com/s/1FVV8fq7vSuGSiOVnE4E_Ag 提取码: bbwv.
+
+
+## 使用方法：
+> 创建data文件夹，把下载好的cnews数据集放在data文件夹下。
+> 创建modles文件夹，用来保存模型
+> 安装相应依赖库: pip -r install requirements.txt
+> 训练: python train.py
+> 预测: python predict.py
