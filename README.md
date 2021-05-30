@@ -36,4 +36,5 @@
 | transformers | 3.2.0 |
 
 
-如果需要数据集和BERT模型，请与我联系.
+～～如果需要数据集和BERT模型，请与我联系.～～
+数据集放在了百度网盘上：链接: https://pan.baidu.com/s/1FVV8fq7vSuGSiOVnE4E_Ag 提取码: bbwv.
