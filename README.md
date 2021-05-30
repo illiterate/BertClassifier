@@ -42,8 +42,13 @@
 
 
 ## 使用方法：
+
 > 创建data文件夹，把下载好的cnews数据集放在data文件夹下。
+
 > 创建modles文件夹，用来保存模型
-> 安装相应依赖库: pip -r install requirements.txt
-> 训练: python train.py
-> 预测: python predict.py
+
+> 安装相应依赖库: `pip -r install requirements.txt`
+
+> 训练: `python train.py`
+
+> 预测: `python predict.py`
