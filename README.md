@@ -47,7 +47,7 @@
 
 > 创建models文件夹，用来保存模型
 
-> 安装相应依赖库: `pip -r install requirements.txt`
+> 安装相应依赖库: `pip install -r requirements.txt`
 
 > 训练: `python train.py`
 
