@@ -26,7 +26,7 @@ def main():
     valid_dataset = CNewsDataset('data/cnews/cnews.val.txt')
     #test_data = load_data('cnews/cnews.test.txt')
 
-    
+
     # 生成Batch
     train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
     valid_dataloader = DataLoader(valid_dataset, batch_size=batch_size, shuffle=False)

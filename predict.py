@@ -15,6 +15,7 @@ bert_config = BertConfig.from_pretrained('bert-base-chinese')
 
 model = BertClassifier(bert_config, len(labels))
 model.load_state_dict(torch.load('models/best_model.pkl', map_location=torch.device('cpu')))
+model.eval()
 
 tokenizer = BertTokenizer.from_pretrained('bert-base-chinese')
 
