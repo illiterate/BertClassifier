@@ -5,6 +5,7 @@
 # @Time: 2020/10/10 17:14:07
 # @Description:
 
+import os
 import torch
 import torch.nn as nn
 from transformers import BertTokenizer, AdamW, BertConfig
@@ -104,6 +105,8 @@ def main():
 
         print('\tValid ACC:', average_acc, '\tLoss:', average_loss)
 
+        if not os.path.exists('models'):
+            os.makedirs('models')
         
         if average_acc > best_acc:
             best_acc = average_acc
