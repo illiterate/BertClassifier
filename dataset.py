@@ -1,3 +1,10 @@
+# coding: utf-8
+# @File: dataset.py
+# @Author: HE D.H.
+# @Email: victor-he@qq.com
+# @Time: 2021/12/09 11:01:32
+# @Description:
+
 import torch
 import numpy as np
 import torch.nn as nn
