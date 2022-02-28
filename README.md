@@ -1,6 +1,6 @@
 # BertClassifier
 
-本文利用了[transformers](https://github.com/huggingface/transformers)中的BertModel，对部分cnews数据集进行了文本分类，在验证集上的最优Acc达到了0.88，拿来对[BERT](https://arxiv.org/abs/1810.04805)模型练手还是不错的。
+（求Star⭐）本文利用了[transformers](https://github.com/huggingface/transformers)中的BertModel，对部分cnews数据集进行了文本分类，在验证集上的最优Acc达到了0.88，拿来对[BERT](https://arxiv.org/abs/1810.04805)模型练手还是不错的。
 
 <!-- more -->
 
@@ -38,7 +38,7 @@
 
 ~~如果需要数据集，请与我联系.~~
 
-数据集放在了百度网盘上：链接: https://pan.baidu.com/s/1FVV8fq7vSuGSiOVnE4E_Ag 提取码: bbwv.
+数据集放在了百度网盘上：链接: https://pan.baidu.com/s/1FVV8fq7vSuGSiOVnE4E_Ag 提取码: bbwv
 
 
 ## 使用方法：
