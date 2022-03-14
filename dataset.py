@@ -24,9 +24,9 @@ class CNewsDataset(Dataset):
         
     def load_data(self, filename):
         print('loading data from:', filename)
-        with open(filename, 'r', encoding='utf-8') as wf:
-            lines = wf.readlines()
-        for line in tqdm(lines):
+        with open(filename, 'r', encoding='utf-8') as rf:
+            lines = rf.readlines()
+        for line in tqdm(lines, ncols=100):
             label, text = line.strip().split('\t')
             label_id = self.labels.index(label)
             token = self.tokenizer(text, add_special_tokens=True, padding='max_length', truncation=True, max_length=512)

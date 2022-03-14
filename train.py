@@ -25,13 +25,13 @@ def main():
     # 获取到dataset
     train_dataset = CNewsDataset('data/cnews/cnews.train.txt')
     valid_dataset = CNewsDataset('data/cnews/cnews.val.txt')
-    #test_data = load_data('cnews/cnews.test.txt')
+    #test_dataset = CNewsDataset('data/cnews/cnews.test.txt')
 
 
     # 生成Batch
     train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
     valid_dataloader = DataLoader(valid_dataset, batch_size=batch_size, shuffle=False)
-    #test_dataloader = DataLoader(valid_data, batch_size=batch_size, shuffle=False)
+    #test_dataloader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
 
     # 读取BERT的配置文件
     bert_config = BertConfig.from_pretrained('bert-base-chinese')
@@ -50,7 +50,7 @@ def main():
         accuracy = 0    # 准确率
 
         model.train()
-        train_bar = tqdm(train_dataloader)
+        train_bar = tqdm(train_dataloader, ncols=100)
         for input_ids, token_type_ids, attention_mask, label_id in train_bar:
             model.zero_grad()
             train_bar.set_description('Epoch %i train' % epoch)
@@ -83,7 +83,7 @@ def main():
         model.eval()
         losses = 0      # 损失
         accuracy = 0    # 准确率
-        valid_bar = tqdm(valid_dataloader)
+        valid_bar = tqdm(valid_dataloader, ncols=100)
         for input_ids, token_type_ids, attention_mask, label_id  in valid_bar:
             valid_bar.set_description('Epoch %i valid' % epoch)
             output = model(
