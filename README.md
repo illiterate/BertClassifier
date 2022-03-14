@@ -1,6 +1,9 @@
 # BertClassifier
 
-（求Star⭐）本文利用了[transformers](https://github.com/huggingface/transformers)中的BertModel，对部分cnews数据集进行了文本分类，在验证集上的最优Acc达到了0.88，拿来对[BERT](https://arxiv.org/abs/1810.04805)模型练手还是不错的。
+（求Star⭐）本项目仅仅提供了最基础的BERT文本分类模型，代码是作者在入门NLP时自己写的，对于初学者还算比较好理解，细节上有不足的地方，大家可以自行修改。读者在使用的时候有任何问题和建议都可以通过邮件联系我。
+<hr>
+本文利用了[transformers](https://github.com/huggingface/transformers)中的BertModel，对部分cnews数据集进行了文本分类，在验证集上的最优Acc达到了0.88，拿来对[BERT](https://arxiv.org/pdf/1810.04805.pdf)模型练手还是不错的。
+
 
 <!-- more -->
 
