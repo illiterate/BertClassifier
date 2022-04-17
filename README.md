@@ -23,6 +23,7 @@
 
 ## 模型描述
 整个分类模型首先把句子输入到Bert预训练模型，然后将*句子的embedding*（CLS位置的Pooled output）输入给一个Linear，最后把Linear的输出输入到softmax中。
+
 ![Figure 1: Model](figure/model.png)
 ## 环境
 
