@@ -13,8 +13,8 @@ from transformers import  BertModel
 class BertClassifier(nn.Module):
     def __init__(self, bert_config, num_labels):
         super().__init__()
-        self.bert = BertModel(config=bert_config)
-        self.classifier = nn.Linear(bert_config.hidden_size, num_labels)
+        self.bert = BertModel(config=bert_config) # 定义BERT模型
+        self.classifier = nn.Linear(bert_config.hidden_size, num_labels)    # 定义分类器
         
     def forward(self, input_ids, attention_mask, token_type_ids):
         bert_output = self.bert(input_ids=input_ids, attention_mask=attention_mask, token_type_ids=token_type_ids)

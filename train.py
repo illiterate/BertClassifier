@@ -40,7 +40,9 @@ def main():
     # 初始化模型
     model = BertClassifier(bert_config, num_labels).to(device)
 
+    # 优化器
     optimizer = AdamW(model.parameters(), lr=learning_rate)
+    # 损失函数
     criterion = nn.CrossEntropyLoss()
 
     best_acc = 0
@@ -52,15 +54,18 @@ def main():
         model.train()
         train_bar = tqdm(train_dataloader, ncols=100)
         for input_ids, token_type_ids, attention_mask, label_id in train_bar:
+            # 梯度清零
             model.zero_grad()
             train_bar.set_description('Epoch %i train' % epoch)
 
+            # 传入数据
             output = model(
                 input_ids=input_ids.to(device), 
                 attention_mask=attention_mask.to(device), 
                 token_type_ids=token_type_ids.to(device), 
             )
 
+            # 计算loss
             loss = criterion(output, label_id.to(device))
             losses += loss.item()
 
