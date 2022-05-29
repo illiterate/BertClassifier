@@ -58,7 +58,7 @@ def main():
             model.zero_grad()
             train_bar.set_description('Epoch %i train' % epoch)
 
-            # 传入数据
+            # 传入数据，调用model.forward()
             output = model(
                 input_ids=input_ids.to(device), 
                 attention_mask=attention_mask.to(device), 
@@ -91,6 +91,7 @@ def main():
         valid_bar = tqdm(valid_dataloader, ncols=100)
         for input_ids, token_type_ids, attention_mask, label_id  in valid_bar:
             valid_bar.set_description('Epoch %i valid' % epoch)
+
             output = model(
                 input_ids=input_ids.to(device), 
                 attention_mask=attention_mask.to(device), 
@@ -113,6 +114,7 @@ def main():
         if not os.path.exists('models'):
             os.makedirs('models')
         
+        # 判断并保存验证集上表现最好的模型
         if average_acc > best_acc:
             best_acc = average_acc
             torch.save(model.state_dict(), 'models/best_model.pkl')

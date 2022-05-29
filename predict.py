@@ -13,7 +13,10 @@ from transformers import BertTokenizer, BertConfig
 labels = ['体育', '娱乐', '家居', '房产', '教育', '时尚', '时政', '游戏', '科技', '财经']
 bert_config = BertConfig.from_pretrained('bert-base-chinese')
 
+# 定义模型
 model = BertClassifier(bert_config, len(labels))
+
+# 加载训练好的模型
 model.load_state_dict(torch.load('models/best_model.pkl', map_location=torch.device('cpu')))
 model.eval()
 
