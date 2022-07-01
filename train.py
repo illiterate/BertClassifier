@@ -29,7 +29,7 @@ def main():
 
 
     # 生成Batch
-    train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+    # train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
     valid_dataloader = DataLoader(valid_dataset, batch_size=batch_size, shuffle=False)
     #test_dataloader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
 
@@ -52,6 +52,7 @@ def main():
         accuracy = 0    # 准确率
 
         model.train()
+        train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
         train_bar = tqdm(train_dataloader, ncols=100)
         for input_ids, token_type_ids, attention_mask, label_id in train_bar:
             # 梯度清零
