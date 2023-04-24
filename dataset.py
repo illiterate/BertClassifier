@@ -16,6 +16,7 @@ class CNewsDataset(Dataset):
     def __init__(self, filename):
         # 数据集初始化
         self.labels = ['体育', '娱乐', '家居', '房产', '教育', '时尚', '时政', '游戏', '科技', '财经']
+        self.labels_id = list(range(len(self.labels)))
         self.tokenizer = BertTokenizer.from_pretrained('bert-base-chinese')
         self.input_ids = []
         self.token_type_ids = []

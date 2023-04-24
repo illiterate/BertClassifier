@@ -13,6 +13,8 @@ from torch.utils.data import DataLoader
 from model import BertClassifier
 from dataset import CNewsDataset
 from tqdm import tqdm
+from sklearn import metrics
+
 
 def main():
 
@@ -45,7 +47,7 @@ def main():
     # 损失函数
     criterion = nn.CrossEntropyLoss()
 
-    best_acc = 0
+    best_f1 = 0
 
     for epoch in range(1, epochs+1):
         losses = 0      # 损失
@@ -74,11 +76,9 @@ def main():
             acc = torch.sum(pred_labels == label_id.to(device)).item() / len(pred_labels) #acc
             accuracy += acc
 
-
             loss.backward()
             optimizer.step()
             train_bar.set_postfix(loss=loss.item(), acc=acc)
-
 
         average_loss = losses / len(train_dataloader)
         average_acc = accuracy / len(train_dataloader)
@@ -88,7 +88,8 @@ def main():
         # 验证
         model.eval()
         losses = 0      # 损失
-        accuracy = 0    # 准确率
+        pred_labels = []
+        true_labels = []
         valid_bar = tqdm(valid_dataloader, ncols=100)
         for input_ids, token_type_ids, attention_mask, label_id  in valid_bar:
             valid_bar.set_description('Epoch %i valid' % epoch)
@@ -102,22 +103,30 @@ def main():
             loss = criterion(output, label_id.to(device))
             losses += loss.item()
 
-            pred_labels = torch.argmax(output, dim=1)   # 预测出的label
-            acc = torch.sum(pred_labels == label_id.to(device)).item() / len(pred_labels) #acc
-            accuracy += acc
+            pred_label = torch.argmax(output, dim=1)   # 预测出的label
+            acc = torch.sum(pred_label == label_id.to(device)).item() / len(pred_label) #acc
             valid_bar.set_postfix(loss=loss.item(), acc=acc)
 
+            pred_labels.extend(pred_label)
+            true_labels.extend(label_id.numpy().tolist())
+
         average_loss = losses / len(valid_dataloader)
-        average_acc = accuracy / len(valid_dataloader)
+        print('\tLoss:', average_loss)
+        
+        # 分类报告
+        report = metrics.classification_report(true_labels, pred_labels, labels=valid_dataset.labels_id, target_names=valid_dataset.labels)
+        print('* Classification Report:')
+        print(report)
 
-        print('\tValid ACC:', average_acc, '\tLoss:', average_loss)
-
+        # f1 用来判断最优模型
+        f1 = metrics.f1_score(true_labels, pred_labels, labels=valid_dataset.labels_id, average='macro')
+        
         if not os.path.exists('models'):
             os.makedirs('models')
         
         # 判断并保存验证集上表现最好的模型
-        if average_acc > best_acc:
-            best_acc = average_acc
+        if f1 > best_f1:
+            best_f1 = f1
             torch.save(model.state_dict(), 'models/best_model.pkl')
         
 if __name__ == '__main__':
