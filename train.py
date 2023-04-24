@@ -107,7 +107,7 @@ def main():
             acc = torch.sum(pred_label == label_id.to(device)).item() / len(pred_label) #acc
             valid_bar.set_postfix(loss=loss.item(), acc=acc)
 
-            pred_labels.extend(pred_label)
+            pred_labels.extend(pred_label.cpu().numpy().tolist())
             true_labels.extend(label_id.numpy().tolist())
 
         average_loss = losses / len(valid_dataloader)
@@ -119,7 +119,7 @@ def main():
         print(report)
 
         # f1 用来判断最优模型
-        f1 = metrics.f1_score(true_labels, pred_labels, labels=valid_dataset.labels_id, average='macro')
+        f1 = metrics.f1_score(true_labels, pred_labels, labels=valid_dataset.labels_id, average='micro')
         
         if not os.path.exists('models'):
             os.makedirs('models')
