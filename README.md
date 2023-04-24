@@ -6,8 +6,6 @@
 本文利用了[transformers](https://github.com/huggingface/transformers)中的BertModel，对部分cnews数据集进行了文本分类，在验证集上的最优Acc达到了0.88，拿来对[BERT](https://arxiv.org/pdf/1810.04805.pdf)模型练手还是不错的。
 
 
-<!-- more -->
-
 ## 数据描述
 数据集是从清华大学的[THUCNews](http://thuctc.thunlp.org/)中提取出来的部分数据。
 
@@ -21,10 +19,16 @@
 {"体育": 500, "娱乐": 500, "家居": 500, "房产": 500, "教育": 500, "时尚": 500, "时政": 500, "游戏": 500, "科技": 500, "财经": 500}
 ```
 
+~~如果需要数据集，请与我联系.~~
+
+数据集放在了百度网盘上：链接: https://pan.baidu.com/s/1FVV8fq7vSuGSiOVnE4E_Ag 提取码: bbwv
+
+
 ## 模型描述
 整个分类模型首先把句子输入到Bert预训练模型，然后将*句子的embedding*（CLS位置的Pooled output）输入给一个Linear，最后把Linear的输出输入到softmax中。
 
 ![Figure 1: Model](figure/model.png)
+
 ## 环境
 
 
@@ -40,11 +44,27 @@
 | PyTorch | 1.6.0 |
 | transformers | 3.2.0 |
 
-
-~~如果需要数据集，请与我联系.~~
-
-数据集放在了百度网盘上：链接: https://pan.baidu.com/s/1FVV8fq7vSuGSiOVnE4E_Ag 提取码: bbwv
-
+## 结果
+分类报告：
+```  
+* Classification Report:                                                                            
+              precision    recall  f1-score   support                                               
+                                                                                                    
+          体育       1.00      0.99      0.99       500                                             
+          娱乐       0.99      0.92      0.96       500                                             
+          家居       0.96      0.73      0.83       500                                             
+          房产       0.83      0.94      0.88       500                                             
+          教育       0.94      0.75      0.84       500                                             
+          时尚       0.89      0.99      0.94       500                                             
+          时政       0.91      0.96      0.93       500                                             
+          游戏       0.93      0.98      0.96       500                                             
+          科技       0.91      0.96      0.93       500                                             
+          财经       0.87      0.98      0.92       500                                             
+                                                                                                    
+    accuracy                           0.92      5000                                               
+   macro avg       0.92      0.92      0.92      5000                                               
+weighted avg       0.92      0.92      0.92      5000
+```
 
 ## 使用方法：
 
