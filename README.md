@@ -77,3 +77,9 @@ weighted avg       0.92      0.92      0.92      5000
 > 训练: `python train.py`
 
 > 预测: `python predict.py`
+
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=illiterate/BertClassifier&type=Date)](https://star-history.com/#illiterate/BertClassifier&Date)
+
