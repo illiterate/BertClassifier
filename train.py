@@ -19,15 +19,18 @@ from sklearn import metrics
 def main():
 
     # 参数设置
+    model_path = r'D:/Workspace/Python/pretrained-models/bert-base-chinese/'
+    data_path = r'D:/Workspace/Python/cnews/'
     batch_size = 4
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     epochs = 10
     learning_rate = 5e-6    #Learning Rate不宜太大
+    tokenizer = BertTokenizer.from_pretrained(model_path)
 
     # 获取到dataset
-    train_dataset = CNewsDataset('data/cnews/cnews.train.txt')
-    valid_dataset = CNewsDataset('data/cnews/cnews.val.txt')
-    #test_dataset = CNewsDataset('data/cnews/cnews.test.txt')
+    train_dataset = CNewsDataset(data_path + 'cnews.train.txt', tokenizer)
+    valid_dataset = CNewsDataset(data_path + 'cnews.val.txt', tokenizer)
+    #test_dataset = CNewsDataset(data_path + 'cnews.test.txt', tokenizer)
 
 
     # 生成Batch
@@ -36,7 +39,7 @@ def main():
     #test_dataloader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
 
     # 读取BERT的配置文件
-    bert_config = BertConfig.from_pretrained('bert-base-chinese')
+    bert_config = BertConfig.from_pretrained(model_path)
     num_labels = len(train_dataset.labels)
 
     # 初始化模型
